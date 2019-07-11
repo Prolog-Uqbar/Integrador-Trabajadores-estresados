@@ -13,7 +13,7 @@ quedaEn(buenosAires, argentina).
 
 % predicado tarea
 % tarea(persona,functor,fecha(dia,mes,anio))
-tarea(dani,tomarExamen(paradigmaLogico,aula522),fecha(10,8,2017)).
+tarea(dani,tomarExamen(paradigmaFuncional,aula522),fecha(10,8,2017)).
 tarea(alf,hacerDiscurso(utn,0),fecha(10,8,2017)).
 tarea(dani,meterGol(primeraDivision),fecha(10,8,2017)).
 
@@ -22,6 +22,7 @@ nacioEn(dani,buenosAires).
 nacioEn(nico,buenosAires).
 nacioEn(alf,buenosAires).
 
+trabajador(Alguien):-nacioEn(Alguien,_).
 
 %%%%%%% 1)
 nuncaSalioDeCasa(Trabajador):-
@@ -39,7 +40,7 @@ seJuegaEn(primeraDivision,argentina). % Este es de la info que piden agregar.
 
 estresante(Tarea):- 
     lugar(Tarea,Lugar),
-    quedaEnArgentina(Lugar),
+    quedaEnArgentina(Lugar) ,
     esTareaEstresante(Tarea).
 
 esTareaEstresante(tomarExamen(Tema,_)):- complejo(Tema).
@@ -96,7 +97,7 @@ calificacion(Trabajador,loco):-
 
 calificacion(Trabajador,sabio):-
 	hizoTareaEstresante(Trabajador,Tarea), % Es inversible
-	not((hizoTareaEstresante(Trabador,Tarea2),Tarea\=Tarea2)).
+	not((hizoTareaEstresante(Trabajador,Tarea2),Tarea\=Tarea2)).
 
 hizoTareaEstresante(Trabajador,Tarea):-
     tarea(Trabajador,Tarea,_),
